@@ -1,5 +1,5 @@
-import type { GatsbyNode } from "gatsby"
-import path from "path"
+import type { GatsbyNode } from "gatsby";
+import path from "path";
 
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
   actions,
@@ -10,5 +10,5 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
         "@": path.resolve(__dirname, "src"),
       },
     },
-  })
-}
+  });
+};

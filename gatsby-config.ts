@@ -14,7 +14,7 @@ const config: GatsbyConfig = {
     address: `Level 10, 123 Queen Street, Melbourne VIC 3000`,
     businessHours: `Mon-Fri: 9am-6pm, Sat: 10am-4pm`,
   },
-  graphqlTypegen: true,
+  graphqlTypegen: false,
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-plugin-react-helmet",
@@ -39,15 +39,15 @@ const config: GatsbyConfig = {
         background_color: `#0B1C3D`,
         theme_color: `#C8A55A`,
         display: `standalone`,
-        icon: `src/images/icon.png`,
+        icon: `src/images/app-logo.png`,
         icons: [
           {
-            src: `src/images/icon.png`,
+            src: `src/images/app-logo.png`,
             sizes: `192x192`,
             type: `image/png`,
           },
           {
-            src: `src/images/icon.png`,
+            src: `src/images/app-logo.png`,
             sizes: `512x512`,
             type: `image/png`,
           },

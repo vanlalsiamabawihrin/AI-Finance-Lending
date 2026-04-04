@@ -81,7 +81,7 @@ export default function Hero() {
             </div>
 
             <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
+              className="inline-flex items-center gap-2 px-4 py-2 mb-2 rounded-full"
               style={{
                 backgroundColor: "rgba(200, 165, 90, 0.1)",
                 border: "1px solid rgba(200, 165, 90, 0.3)",
@@ -130,13 +130,6 @@ export default function Hero() {
           </div>
 
           <div className="relative bg-white/90 border border-white rounded-[2rem] shadow-card p-6 sm:p-8 lg:p-10 backdrop-blur">
-            <div
-              className="absolute -top-4 right-4 sm:right-8 text-white text-[11px] font-semibold px-3 sm:px-4 py-2 rounded-full tracking-wide"
-              style={{ backgroundColor: "#0B1C3D" }}
-            >
-              24h Response Promise
-            </div>
-
             <h3
               className="text-2xl font-bold mb-2"
               style={{ color: "#0B1C3D" }}

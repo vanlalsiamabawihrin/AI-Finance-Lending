@@ -85,7 +85,8 @@ export default function Header() {
         >
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-soft border border-neutral-100">
+              {/* use gradient like 24 hour response Guarantee */}
+              <div className="w-14 h-14 rounded-2xl bg-[#c8a55a1a] flex items-center justify-center shadow-soft border border-neutral-100">
                 <img
                   src={appLogo}
                   alt="AI Finance logo"
@@ -100,7 +101,7 @@ export default function Header() {
                   AI Finance & Lending
                 </span>
                 <span
-                  className="hidden sm:block text-[10px] font-bold leading-tight tracking-[0.2em]"
+                  className="hidden sm:block text-[10px] font-bold leading-tight tracking-[1.7px]"
                   style={{ color: "#A98336" }}
                 >
                   HELPING YOU GET APPROVED
