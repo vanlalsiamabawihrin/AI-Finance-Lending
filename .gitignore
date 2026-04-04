@@ -1,0 +1,35 @@
+# OS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Node / JS dependencies
+**/node_modules/
+
+# Build and cache directories
+**/.cache/
+**/public/
+**/dist/
+**/build/
+**/coverage/
+
+# Gatsby
+**/.gatsby/
+
+# Package manager stores
+.pnpm-store/
+.npm/
