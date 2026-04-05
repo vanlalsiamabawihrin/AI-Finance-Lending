@@ -2,7 +2,13 @@ import React from "react";
 import { Helmet } from "react-helmet";
 
 interface SchemaMarkupProps {
-  type?: "organization" | "localBusiness" | "financialService" | "breadcrumb";
+  type?:
+    | "organization"
+    | "localBusiness"
+    | "financialService"
+    | "breadcrumb"
+    | "faq"
+    | "review";
   data?: any;
 }
 
@@ -189,6 +195,51 @@ const SchemaMarkup: React.FC<SchemaMarkupProps> = ({
     })),
   });
 
+  const getFAQSchema = (faqs: any[]) => ({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  });
+
+  const getReviewSchema = (reviews: any[]) => ({
+    "@context": "https://schema.org",
+    "@type": "AggregateRating",
+    itemReviewed: {
+      "@type": "Organization",
+      name: "AI Finance & Lending",
+      url: "https://www.aifinancelending.com.au",
+    },
+    ratingValue: "4.9",
+    reviewCount: "500",
+    bestRating: "5",
+    worstRating: "1",
+    review: reviews.map((review) => ({
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: review.name,
+      },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: review.rating.toString(),
+        bestRating: "5",
+        worstRating: "1",
+      },
+      reviewBody: review.text,
+      publisher: {
+        "@type": "Organization",
+        name: "AI Finance & Lending",
+      },
+    })),
+  });
+
   const getSchema = () => {
     switch (type) {
       case "organization":
@@ -199,6 +250,10 @@ const SchemaMarkup: React.FC<SchemaMarkupProps> = ({
         return getFinancialServiceSchema();
       case "breadcrumb":
         return getBreadcrumbSchema(data || []);
+      case "faq":
+        return getFAQSchema(data || []);
+      case "review":
+        return getReviewSchema(data || []);
       default:
         return getOrganizationSchema();
     }

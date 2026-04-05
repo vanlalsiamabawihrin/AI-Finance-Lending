@@ -42,7 +42,7 @@ export default function Footer() {
               <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-soft border border-white/15">
                 <img
                   src={appLogo}
-                  alt="AI Finance logo"
+                  alt="AI Finance & Lending - Australian Mortgage Broker Logo"
                   className="h-8 w-auto rounded-2xl"
                 />
               </div>

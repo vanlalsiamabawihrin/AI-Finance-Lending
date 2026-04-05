@@ -89,7 +89,7 @@ export default function Header() {
               <div className="w-14 h-14 rounded-2xl bg-[#c8a55a1a] flex items-center justify-center shadow-soft border border-neutral-100">
                 <img
                   src={appLogo}
-                  alt="AI Finance logo"
+                  alt="AI Finance & Lending - Australian Mortgage Broker Logo"
                   className="h-12 w-auto rounded-2xl"
                 />
               </div>

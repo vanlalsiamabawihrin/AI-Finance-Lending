@@ -18,7 +18,7 @@ export default function About() {
               <div className="absolute -inset-4 bg-gradient-to-br from-accent to-accent-dark rounded-3xl opacity-20 blur-2xl"></div>
               <img
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=700&fit=crop"
-                alt="Professional Mortgage Broker"
+                alt="Professional mortgage broker in Melbourne helping Australian families with home loans and refinancing"
                 className="relative rounded-3xl shadow-soft w-full h-[500px] object-cover"
               />
               <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-card p-6">

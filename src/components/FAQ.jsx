@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import SchemaMarkup from "./SchemaMarkup";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -49,56 +50,61 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-20 bg-neutral-50">
-      <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Got questions? We have answers
-          </p>
-        </div>
+    <>
+      <SchemaMarkup type="faq" data={faqs} />
+      <section className="py-20 bg-neutral-50">
+        <div className="section-container">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Got questions? We have answers
+            </p>
+          </div>
 
-        <div className="max-w-4xl mx-auto">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-card mb-4 overflow-hidden transition-all duration-300 hover:shadow-soft"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-8 py-6 flex items-center justify-between text-left"
-              >
-                <span className="text-lg font-bold text-primary pr-8">
-                  {faq.question}
-                </span>
-                <ChevronDown
-                  className={`w-6 h-6 text-accent flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
+          <div className="max-w-4xl mx-auto">
+            {faqs.map((faq, index) => (
               <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "max-h-96" : "max-h-0"
-                }`}
+                key={index}
+                className="bg-white rounded-xl shadow-card mb-4 overflow-hidden transition-all duration-300 hover:shadow-soft"
               >
-                <div className="px-8 pb-6 text-gray-600 leading-relaxed">
-                  {faq.answer}
+                <button
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
+                  className="w-full px-8 py-6 flex items-center justify-between text-left"
+                >
+                  <span className="text-lg font-bold text-primary pr-8">
+                    {faq.question}
+                  </span>
+                  <ChevronDown
+                    className={`w-6 h-6 text-accent flex-shrink-0 transition-transform duration-300 ${
+                      openIndex === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openIndex === index ? "max-h-96" : "max-h-0"
+                  }`}
+                >
+                  <div className="px-8 pb-6 text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="text-center mt-12">
-          <p className="text-gray-600 mb-6">Still have questions?</p>
-          <a href="#contact" className="btn-primary inline-block">
-            Contact Us Today
-          </a>
+          <div className="text-center mt-12">
+            <p className="text-gray-600 mb-6">Still have questions?</p>
+            <a href="#contact" className="btn-primary inline-block">
+              Contact Us Today
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

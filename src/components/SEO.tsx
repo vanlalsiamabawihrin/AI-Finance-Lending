@@ -104,10 +104,21 @@ const SEO: React.FC<SEOProps> = ({
         href="https://fonts.gstatic.com"
         crossOrigin="anonymous"
       />
+      <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
       {/* Additional SEO tags */}
       <meta name="format-detection" content="telephone=yes" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+
+      {/* Verification tags for webmaster tools */}
+      <meta name="google-site-verification" content="your-verification-code" />
+
+      {/* Additional meta tags for better indexing */}
+      <meta name="revisit-after" content="7 days" />
+      <meta name="distribution" content="global" />
+      <meta name="rating" content="general" />
+      <meta name="referrer" content="origin-when-cross-origin" />
 
       {children}
     </Helmet>
