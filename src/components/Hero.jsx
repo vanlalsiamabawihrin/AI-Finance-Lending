@@ -26,11 +26,11 @@ export default function Hero() {
         }}
       />
       <div
-        className="absolute top-20 -left-32 w-80 h-80 rounded-full blur-3xl -z-10"
+        className="hidden md:block absolute top-20 -left-32 w-80 h-80 rounded-full blur-3xl -z-10"
         style={{ backgroundColor: "rgba(200, 165, 90, 0.1)" }}
       />
       <div
-        className="absolute bottom-10 -right-24 w-72 h-72 rounded-full blur-3xl -z-10"
+        className="hidden md:block absolute bottom-10 -right-24 w-72 h-72 rounded-full blur-3xl -z-10"
         style={{ backgroundColor: "rgba(11, 28, 61, 0.1)" }}
       />
 

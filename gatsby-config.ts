@@ -21,23 +21,24 @@ const config: GatsbyConfig = {
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: [
-          "G-XXXXXXXXXX", // Google Analytics 4 - Replace with your actual tracking ID
-        ],
-        gtagConfig: {
-          anonymize_ip: true,
-          cookie_expires: 0,
-        },
-        pluginConfig: {
-          head: true,
-          respectDNT: true,
-          exclude: ["/admin/**", "/private/**"],
-        },
-      },
-    },
+    // Google Analytics - Uncomment after installing: npm install gatsby-plugin-google-gtag
+    // {
+    //   resolve: `gatsby-plugin-google-gtag`,
+    //   options: {
+    //     trackingIds: [
+    //       "G-XXXXXXXXXX", // Google Analytics 4 - Replace with your actual tracking ID
+    //     ],
+    //     gtagConfig: {
+    //       anonymize_ip: true,
+    //       cookie_expires: 0,
+    //     },
+    //     pluginConfig: {
+    //       head: true,
+    //       respectDNT: true,
+    //       exclude: ["/admin/**", "/private/**"],
+    //     },
+    //   },
+    // },
     {
       resolve: "gatsby-source-filesystem",
       options: {

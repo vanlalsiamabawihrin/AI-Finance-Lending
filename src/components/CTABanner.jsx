@@ -10,11 +10,11 @@ export default function CTABanner() {
       }}
     >
       <div
-        className="absolute -top-24 -right-20 w-80 h-80 rounded-full blur-3xl"
+        className="hidden md:block absolute -top-24 -right-20 w-80 h-80 rounded-full blur-3xl"
         style={{ backgroundColor: "rgba(200, 165, 90, 0.2)" }}
       />
       <div
-        className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full blur-3xl"
+        className="hidden md:block absolute -bottom-24 -left-24 w-72 h-72 rounded-full blur-3xl"
         style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
       />
       <div className="section-container">

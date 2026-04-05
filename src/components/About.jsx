@@ -21,7 +21,7 @@ export default function About() {
                 alt="Professional mortgage broker in Melbourne helping Australian families with home loans and refinancing"
                 className="relative rounded-3xl shadow-soft w-full h-[500px] object-cover"
               />
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-card p-6">
+              <div className="hidden sm:block absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-card p-6">
                 <p className="text-4xl font-bold text-accent mb-1">15+</p>
                 <p className="text-sm text-gray-600 font-semibold">
                   Years Experience

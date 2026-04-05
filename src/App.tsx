@@ -36,10 +36,10 @@ function App() {
       <SchemaMarkup type="localBusiness" />
       <SchemaMarkup type="financialService" />
       <SchemaMarkup type="breadcrumb" data={breadcrumbs} />
-      <div className="min-h-screen bg-gradient-to-b from-neutral-50 via-white to-neutral-50">
+      <div className="min-h-screen bg-gradient-to-b from-neutral-50 via-white to-neutral-50 overflow-x-hidden w-full">
         <TrustBar />
         <Header />
-        <main>
+        <main className="overflow-x-hidden w-full">
           <Hero />
           <LenderStrip />
           <WhyChooseUs />

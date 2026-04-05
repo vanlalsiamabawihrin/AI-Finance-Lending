@@ -43,11 +43,11 @@ export default function HowItWorks() {
       }}
     >
       <div
-        className="absolute top-10 -left-28 w-80 h-80 rounded-full blur-3xl"
+        className="hidden md:block absolute top-10 -left-28 w-80 h-80 rounded-full blur-3xl"
         style={{ backgroundColor: "rgba(200, 165, 90, 0.15)" }}
       />
       <div
-        className="absolute -bottom-24 -right-20 w-72 h-72 rounded-full blur-3xl"
+        className="hidden md:block absolute -bottom-24 -right-20 w-72 h-72 rounded-full blur-3xl"
         style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
       />
 
