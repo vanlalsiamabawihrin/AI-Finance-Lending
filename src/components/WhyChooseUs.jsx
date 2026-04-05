@@ -31,49 +31,100 @@ export default function WhyChooseUs() {
 
   return (
     <section
-      className="py-24"
-      style={{ background: "linear-gradient(to bottom, #F7F5F0, white)" }}
+      className="py-24 md:py-32"
+      style={{
+        background:
+          "linear-gradient(180deg, var(--neutral-50) 0%, #ffffff 100%)",
+      }}
     >
       <div className="section-container">
-        <div className="text-center mb-16">
-          <span className="section-eyebrow mb-4">
-            Why clients choose AI Finance
-          </span>
-          <h2 className="premium-heading mb-4">Why Choose Us?</h2>
+        <div className="text-center mb-16 md:mb-20">
+          <div className="inline-flex items-center gap-2 mb-6 premium-badge">
+            <span>Our Advantages</span>
+          </div>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 800,
+              lineHeight: 1.2,
+              letterSpacing: "-0.02em",
+              color: "var(--primary)",
+              marginBottom: "1rem",
+            }}
+          >
+            Why Choose AI Finance
+          </h2>
+          <div className="accent-line mx-auto mb-6"></div>
           <p
-            className="text-xl max-w-2xl mx-auto"
-            style={{ color: "rgba(11, 28, 61, 0.65)" }}
+            style={{
+              fontSize: "clamp(1rem, 2vw, 1.125rem)",
+              lineHeight: 1.6,
+              color: "var(--neutral-600)",
+              maxWidth: "42rem",
+              margin: "0 auto",
+            }}
           >
             We are not just mortgage brokers - we are your partners in achieving
-            homeownership
+            homeownership success
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="card hover:-translate-y-1 hover:scale-[1.02]"
+              className="card text-center"
+              style={{
+                padding: "2rem 1.5rem",
+                transition: "all var(--transition-base)",
+              }}
             >
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
                 style={{
-                  background:
-                    "linear-gradient(to bottom right, #C8A55A, #A98336)",
-                  boxShadow: "0 20px 45px -22px rgba(169, 131, 54, 0.45)",
+                  width: "3.5rem",
+                  height: "3.5rem",
+                  borderRadius: "var(--radius-xl)",
+                  background: "var(--neutral-100)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "0 auto 1.5rem",
+                  border: "1px solid var(--neutral-200)",
+                  transition: "all var(--transition-base)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "var(--neutral-200)";
+                  e.currentTarget.style.borderColor = "var(--neutral-300)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "var(--neutral-100)";
+                  e.currentTarget.style.borderColor = "var(--neutral-200)";
                 }}
               >
-                <feature.icon className="w-7 h-7 text-white" />
+                <feature.icon
+                  className="w-6 h-6"
+                  style={{ color: "var(--neutral-700)" }}
+                />
               </div>
               <h3
-                className="text-xl font-bold mb-3"
-                style={{ color: "#0B1C3D" }}
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "1.25rem",
+                  fontWeight: 700,
+                  lineHeight: 1.3,
+                  color: "var(--primary)",
+                  marginBottom: "0.75rem",
+                }}
               >
                 {feature.title}
               </h3>
               <p
-                className="leading-relaxed"
-                style={{ color: "rgba(11, 28, 61, 0.6)" }}
+                style={{
+                  fontSize: "0.9375rem",
+                  lineHeight: 1.6,
+                  color: "var(--neutral-600)",
+                }}
               >
                 {feature.description}
               </p>

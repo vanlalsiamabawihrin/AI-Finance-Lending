@@ -51,56 +51,100 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="py-24"
-      style={{ background: "linear-gradient(to bottom, white, #F7F5F0)" }}
+      className="py-24 md:py-32"
+      style={{
+        background:
+          "linear-gradient(180deg, #ffffff 0%, var(--neutral-50) 100%)",
+      }}
     >
       <div className="section-container">
-        <div className="text-center mb-16">
-          <span className="section-eyebrow mb-4">What we help you secure</span>
-          <h2 className="premium-heading mb-4">Our Services</h2>
-          <p
-            className="text-xl max-w-2xl mx-auto"
-            style={{ color: "rgba(11, 28, 61, 0.65)" }}
+        <div className="text-center mb-16 md:mb-20">
+          <div className="inline-flex items-center gap-2 mb-6 premium-badge">
+            <span>Premium Services</span>
+          </div>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 800,
+              lineHeight: 1.2,
+              letterSpacing: "-0.02em",
+              color: "var(--primary)",
+              marginBottom: "1rem",
+            }}
           >
-            Comprehensive mortgage solutions for every situation
+            Comprehensive Lending Solutions
+          </h2>
+          <div className="accent-line mx-auto mb-6"></div>
+          <p
+            style={{
+              fontSize: "clamp(1rem, 2vw, 1.125rem)",
+              lineHeight: 1.6,
+              color: "var(--neutral-600)",
+              maxWidth: "42rem",
+              margin: "0 auto",
+            }}
+          >
+            Tailored mortgage solutions backed by 15+ years of expertise and
+            access to Australia's leading lenders
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group card hover:border-accent/40 hover:-translate-y-1"
+              className="group card"
+              style={{
+                cursor: "pointer",
+                transition: "all var(--transition-base)",
+              }}
             >
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300 group-hover:transition-colors group-hover:duration-300"
                 style={{
-                  backgroundColor: "rgba(11, 28, 61, 0.05)",
-                  border: "1px solid rgba(200, 165, 90, 0.3)",
+                  width: "3.5rem",
+                  height: "3.5rem",
+                  borderRadius: "var(--radius-xl)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "1.5rem",
+                  background: "var(--neutral-100)",
+                  border: "1px solid var(--neutral-200)",
+                  transition: "all var(--transition-base)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor =
-                    "rgba(11, 28, 61, 0.1)";
+                  e.currentTarget.style.background = "var(--neutral-200)";
+                  e.currentTarget.style.borderColor = "var(--neutral-300)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor =
-                    "rgba(11, 28, 61, 0.05)";
+                  e.currentTarget.style.background = "var(--neutral-100)";
+                  e.currentTarget.style.borderColor = "var(--neutral-200)";
                 }}
               >
                 <service.icon
-                  className="w-6 h-6 transition-colors duration-300"
-                  style={{ color: "#A98336" }}
+                  className="w-6 h-6"
+                  style={{ color: "var(--neutral-700)" }}
                 />
               </div>
               <h3
-                className="text-xl font-bold mb-3"
-                style={{ color: "#0B1C3D" }}
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "1.25rem",
+                  fontWeight: 700,
+                  lineHeight: 1.3,
+                  color: "var(--primary)",
+                  marginBottom: "0.75rem",
+                }}
               >
                 {service.title}
               </h3>
               <p
-                className="leading-relaxed mb-4"
-                style={{ color: "rgba(11, 28, 61, 0.7)" }}
+                style={{
+                  fontSize: "0.9375rem",
+                  lineHeight: 1.6,
+                  color: "var(--neutral-600)",
+                }}
               >
                 {service.description}
               </p>

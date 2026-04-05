@@ -84,43 +84,83 @@ export default function Header() {
           }`}
         >
           <div className="flex items-center justify-between py-3">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1">
               {/* use gradient like 24 hour response Guarantee */}
-              <div className="w-14 h-14 rounded-2xl bg-[#c8a55a1a] flex items-center justify-center shadow-soft border border-neutral-100">
+              <div
+                style={{
+                  width: "3.5rem",
+                  height: "3.5rem",
+                  borderRadius: "var(--radius-xl)",
+                  background:
+                    "linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.12) 100%)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid rgba(212, 175, 55, 0.15)",
+                  boxShadow: "var(--shadow-xs)",
+                }}
+              >
                 <img
                   src={appLogo}
                   alt="AI Finance & Lending - Australian Mortgage Broker Logo"
-                  className="h-12 w-auto rounded-2xl"
+                  style={{
+                    height: "2.75rem",
+                    width: "auto",
+                    borderRadius: "var(--radius-lg)",
+                  }}
                 />
               </div>
               <div className="flex flex-col">
                 <span
-                  className="font-extrabold text-lg leading-tight tracking-tight"
-                  style={{ color: "#0B1C3D" }}
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
+                    lineHeight: 1.2,
+                    letterSpacing: "-0.01em",
+                    color: "var(--primary)",
+                  }}
                 >
                   AI Finance & Lending
                 </span>
                 <span
-                  className="hidden sm:block text-[10px] font-bold leading-tight tracking-[1.7px]"
-                  style={{ color: "#A98336" }}
+                  className="hidden sm:block"
+                  style={{
+                    fontSize: "0.6875rem",
+                    fontWeight: 600,
+                    lineHeight: 1.2,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: "var(--accent-dark)",
+                  }}
                 >
-                  HELPING YOU GET APPROVED
+                  Premium Advisory
                 </span>
               </div>
             </div>
 
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="font-semibold text-sm transition-colors duration-200"
-                  style={{ color: "rgba(11, 28, 61, 0.9)" }}
+                  style={{
+                    fontSize: "0.9375rem",
+                    fontWeight: 500,
+                    color: "var(--neutral-700)",
+                    transition: "all var(--transition-base)",
+                    padding: "0.5rem 0.75rem",
+                    borderRadius: "var(--radius-md)",
+                    position: "relative",
+                  }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#A98336";
+                    e.currentTarget.style.color = "var(--primary)";
+                    e.currentTarget.style.background =
+                      "rgba(212, 175, 55, 0.06)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "rgba(11, 28, 61, 0.9)";
+                    e.currentTarget.style.color = "var(--neutral-700)";
+                    e.currentTarget.style.background = "transparent";
                   }}
                 >
                   {link.name}
@@ -131,20 +171,33 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-4">
               <a
                 href="tel:1300000000"
-                className="flex items-center gap-2 transition-colors"
-                style={{ color: "rgba(11, 28, 61, 0.9)" }}
+                className="flex items-center gap-2"
+                style={{
+                  color: "var(--neutral-700)",
+                  fontSize: "0.9375rem",
+                  fontWeight: 500,
+                  transition: "all var(--transition-base)",
+                  padding: "0.5rem 0.75rem",
+                  borderRadius: "var(--radius-md)",
+                }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#A98336";
+                  e.currentTarget.style.color = "var(--accent-dark)";
+                  e.currentTarget.style.background = "rgba(212, 175, 55, 0.06)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "rgba(11, 28, 61, 0.9)";
+                  e.currentTarget.style.color = "var(--neutral-700)";
+                  e.currentTarget.style.background = "transparent";
                 }}
               >
                 <Phone className="w-4 h-4" />
-                <span className="font-semibold">1300 000 000</span>
+                <span>1300 000 000</span>
               </a>
-              <a href="#contact" className="btn-primary text-sm py-3 px-6">
-                Book Free Consultation
+              <a
+                href="#contact"
+                className="btn-primary"
+                style={{ fontSize: "0.9375rem", padding: "0.75rem 1.5rem" }}
+              >
+                Get Started
               </a>
             </div>
 
@@ -162,7 +215,7 @@ export default function Header() {
           </div>
 
           {isMobileMenuOpen && (
-            <div className="lg:hidden pb-4 border-t border-neutral-200/80 pt-4 max-h-[70vh] overflow-y-auto">
+            <div className="lg:hidden pb-4 border-t border-neutral-200/80 pt-4 h-screen overflow-y-auto">
               <div className="flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <a

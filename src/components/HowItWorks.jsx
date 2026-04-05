@@ -44,29 +44,47 @@ export default function HowItWorks() {
     >
       <div
         className="hidden md:block absolute top-10 -left-28 w-80 h-80 rounded-full blur-3xl"
-        style={{ backgroundColor: "rgba(200, 165, 90, 0.15)" }}
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.03)" }}
       />
       <div
         className="hidden md:block absolute -bottom-24 -right-20 w-72 h-72 rounded-full blur-3xl"
-        style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
       />
 
       <div className="section-container relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 md:mb-20">
           <p
             className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold mb-4"
             style={{
               backgroundColor: "rgba(255, 255, 255, 0.1)",
-              color: "#E7D2A8",
+              color: "rgba(255, 255, 255, 0.8)",
               border: "1px solid rgba(255, 255, 255, 0.2)",
             }}
           >
             Your path to approval
           </p>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 800,
+              lineHeight: 1.2,
+              letterSpacing: "-0.02em",
+              color: "white",
+              marginBottom: "1rem",
+            }}
+          >
             How It Works
           </h2>
-          <p className="text-xl text-white/75 max-w-2xl mx-auto">
+          <p
+            style={{
+              fontSize: "clamp(1rem, 2vw, 1.125rem)",
+              lineHeight: 1.6,
+              color: "rgba(255, 255, 255, 0.75)",
+              maxWidth: "42rem",
+              margin: "0 auto",
+            }}
+          >
             Simple, transparent process from start to finish
           </p>
         </div>

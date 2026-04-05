@@ -26,14 +26,14 @@ export default function LeadMagnet() {
       className="py-20 text-white relative overflow-hidden"
       style={{ background: "linear-gradient(135deg, #0B1C3D, #071125)" }}
     >
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-5">
         <div
           className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl"
-          style={{ backgroundColor: "#C8A55A" }}
+          style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
         ></div>
         <div
           className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
-          style={{ backgroundColor: "#E7D2A8" }}
+          style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
         ></div>
       </div>
 
@@ -41,14 +41,26 @@ export default function LeadMagnet() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div
-              className="inline-block backdrop-blur-sm px-4 py-2 rounded-full mb-6"
-              style={{ backgroundColor: "rgba(200, 165, 90, 0.2)" }}
+              className="inline-flex items-center gap-2 mb-6 premium-badge"
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                color: "rgba(255, 255, 255, 0.8)",
+              }}
             >
-              <span className="font-semibold" style={{ color: "#E7D2A8" }}>
-                FREE DOWNLOAD
-              </span>
+              <span>FREE DOWNLOAD</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                color: "white",
+                marginBottom: "1.5rem",
+              }}
+            >
               The Ultimate Australian Home Buyer's Guide
             </h2>
             <p
@@ -64,7 +76,7 @@ export default function LeadMagnet() {
                 <div key={index} className="flex items-start gap-3">
                   <CheckCircle2
                     className="w-6 h-6 flex-shrink-0 mt-0.5"
-                    style={{ color: "#C8A55A" }}
+                    style={{ color: "rgba(255, 255, 255, 0.7)" }}
                   />
                   <span className="text-lg">{benefit}</span>
                 </div>
@@ -73,7 +85,7 @@ export default function LeadMagnet() {
 
             <div
               className="flex items-center gap-4"
-              style={{ color: "#E7D2A8" }}
+              style={{ color: "rgba(255, 255, 255, 0.7)" }}
             >
               <Download className="w-6 h-6" />
               <span className="font-semibold">

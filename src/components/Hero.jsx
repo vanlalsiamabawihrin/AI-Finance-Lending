@@ -1,5 +1,12 @@
 import React from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Shield,
+  Award,
+  TrendingUp,
+  Phone,
+} from "lucide-react";
 import { useState } from "react";
 
 export default function Hero() {
@@ -16,129 +23,177 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-40 md:pt-44 pb-16 md:pb-20 overflow-hidden"
+      className="relative pt-45 md:pt-60 pb-20 md:pb-28 overflow-hidden"
+      style={{
+        background: "linear-gradient(180deg, #fafaf9 0%, #ffffff 100%)",
+      }}
     >
+      {/* Sophisticated Background Pattern */}
       <div
-        className="absolute inset-0 -z-20"
+        className="absolute inset-0 -z-10"
         style={{
-          background:
-            "linear-gradient(to bottom right, #F7F5F0, white, #ECE8DD)",
+          backgroundImage: `radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                         radial-gradient(circle at 80% 80%, rgba(10, 22, 40, 0.03) 0%, transparent 50%)`,
         }}
       />
+
+      {/* Premium Grid Pattern */}
       <div
-        className="hidden md:block absolute top-20 -left-32 w-80 h-80 rounded-full blur-3xl -z-10"
-        style={{ backgroundColor: "rgba(200, 165, 90, 0.1)" }}
-      />
-      <div
-        className="hidden md:block absolute bottom-10 -right-24 w-72 h-72 rounded-full blur-3xl -z-10"
-        style={{ backgroundColor: "rgba(11, 28, 61, 0.1)" }}
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: `linear-gradient(rgba(10, 22, 40, 0.02) 1px, transparent 1px),
+                         linear-gradient(90deg, rgba(10, 22, 40, 0.02) 1px, transparent 1px)`,
+          backgroundSize: "64px 64px",
+        }}
       />
 
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="section-eyebrow mb-6">
-              Trusted by 2,500+ Australian homeowners
-            </span>
+          <div className="animate-fade-in-up">
+            {/* Premium Trust Badge */}
+            <div className="inline-flex items-center gap-2 mb-6 premium-badge">
+              <Shield
+                className="w-3.5 h-3.5"
+                style={{ color: "var(--neutral-600)" }}
+              />
+              <span>Trusted by 2,500+ Australian Homeowners</span>
+            </div>
 
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 tracking-tight"
-              style={{ color: "#0B1C3D" }}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+                fontWeight: 800,
+                lineHeight: 1.1,
+                letterSpacing: "-0.03em",
+                marginBottom: "1.5rem",
+                color: "var(--primary)",
+              }}
             >
-              Your Trusted
-              <span className="block mt-2" style={{ color: "#C8A55A" }}>
-                Finance Advisor
+              Premium Mortgage
+              <span
+                className="block"
+                style={{
+                  background:
+                    "linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Solutions for Australia
               </span>
             </h1>
 
             <p
-              className="text-xl md:text-2xl mb-8 leading-relaxed max-w-2xl"
-              style={{ color: "rgba(11, 28, 61, 0.7)" }}
-            >
-              Get expert mortgage advice and access to 40+ lenders.
-              <span
-                className="block mt-2 font-semibold"
-                style={{ color: "#0B1C3D" }}
-              >
-                Pre-approval in 24 hours. No upfront fees.
-              </span>
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <a
-                href="#contact"
-                className="btn-primary inline-flex items-center justify-center gap-2 text-lg px-8 py-5 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                Get Pre-Approval Now
-                <ArrowRight className="w-5 h-5" />
-              </a>
-              <a
-                href="tel:1300000000"
-                className="btn-secondary inline-flex items-center justify-center gap-2 text-lg px-8 py-5"
-              >
-                📞 Call 1300 000 000
-              </a>
-            </div>
-
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 mb-2 rounded-full"
               style={{
-                backgroundColor: "rgba(200, 165, 90, 0.1)",
-                border: "1px solid rgba(200, 165, 90, 0.3)",
+                fontSize: "clamp(1.125rem, 2vw, 1.375rem)",
+                lineHeight: 1.6,
+                color: "var(--neutral-600)",
+                marginBottom: "2rem",
+                maxWidth: "600px",
               }}
             >
-              <span
-                className="text-sm font-semibold"
-                style={{ color: "#A98336" }}
-              >
-                ⚡ 24-Hour Response Guarantee
-              </span>
+              Access exclusive rates from 40+ premium lenders. Expert guidance,
+              <strong style={{ color: "var(--primary)", fontWeight: 600 }}>
+                {" "}
+                24-hour pre-approval
+              </strong>
+              , and zero upfront fees.
+            </p>
+
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap gap-4 mb-8">
+              <div className="trust-indicator">
+                <Award
+                  className="w-4 h-4"
+                  style={{ color: "var(--neutral-600)" }}
+                />
+                <span>15+ Years Experience</span>
+              </div>
+              <div className="trust-indicator">
+                <TrendingUp
+                  className="w-4 h-4"
+                  style={{ color: "var(--neutral-600)" }}
+                />
+                <span>$850M+ Settled</span>
+              </div>
             </div>
 
-            <div className="flex flex-col gap-3">
-              <div
-                className="flex items-center gap-3"
-                style={{ color: "rgba(11, 28, 61, 0.8)" }}
-              >
-                <CheckCircle2
-                  className="w-5 h-5 flex-shrink-0"
-                  style={{ color: "#C8A55A" }}
-                />
-                <span>No upfront fees - free consultation</span>
-              </div>
-              <div
-                className="flex items-center gap-3"
-                style={{ color: "rgba(11, 28, 61, 0.8)" }}
-              >
-                <CheckCircle2
-                  className="w-5 h-5 flex-shrink-0"
-                  style={{ color: "#C8A55A" }}
-                />
-                <span>Compare 40+ lenders in minutes</span>
-              </div>
-              <div
-                className="flex items-center gap-3"
-                style={{ color: "rgba(11, 28, 61, 0.8)" }}
-              >
-                <CheckCircle2
-                  className="w-5 h-5 flex-shrink-0"
-                  style={{ color: "#C8A55A" }}
-                />
-                <span>Expert guidance from application to settlement</span>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <a href="#contact" className="btn-primary group">
+                <span>Get Pre-Approval Now</span>
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </a>
+              <a href="tel:1300000000" className="btn-secondary group">
+                <Phone className="w-4 h-4" />
+                <span>1300 000 000</span>
+              </a>
+            </div>
+
+            {/* Key Benefits */}
+            <div className="space-y-3">
+              {[
+                "No upfront fees - complimentary consultation",
+                "Compare 40+ premium lenders instantly",
+                "White-glove service from application to settlement",
+              ].map((benefit, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-3"
+                  style={{ color: "var(--neutral-700)" }}
+                >
+                  <div
+                    style={{
+                      marginTop: "2px",
+                      width: "20px",
+                      height: "20px",
+                      borderRadius: "50%",
+                      background: "var(--neutral-200)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <CheckCircle2
+                      className="w-3 h-3"
+                      style={{ color: "var(--neutral-600)" }}
+                    />
+                  </div>
+                  <span style={{ fontSize: "0.9375rem", lineHeight: 1.6 }}>
+                    {benefit}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="relative bg-white/90 border border-white rounded-[2rem] shadow-card p-6 sm:p-8 lg:p-10 backdrop-blur">
-            <h3
-              className="text-2xl font-bold mb-2"
-              style={{ color: "#0B1C3D" }}
-            >
-              Quick Loan Enquiry
-            </h3>
-            <p className="mb-6" style={{ color: "rgba(11, 28, 61, 0.7)" }}>
-              Get a free assessment in 24 hours
-            </p>
+          <div
+            className="relative bg-white border rounded-[1.5rem] p-6 sm:p-8 lg:p-10 animate-fade-in"
+            style={{
+              border: "1px solid var(--neutral-100)",
+              boxShadow: "var(--shadow-xl)",
+            }}
+          >
+            {/* Form Header with Accent Line */}
+            <div className="mb-8">
+              <div className="accent-line mb-4"></div>
+              <h3
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(1.5rem, 3vw, 1.875rem)",
+                  fontWeight: 700,
+                  color: "var(--primary)",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                Start Your Application
+              </h3>
+              <p style={{ color: "var(--neutral-600)", fontSize: "0.9375rem" }}>
+                Complimentary assessment • 24-hour response
+              </p>
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>

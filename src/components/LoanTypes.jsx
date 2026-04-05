@@ -25,8 +25,9 @@ export default function LoanTypes() {
       emoji: "🏠",
       title: "First Home Buyers",
       subtitle: "Your journey to homeownership",
-      color: "#10B981",
-      gradient: "linear-gradient(135deg, #10B981, #059669)",
+      color: "var(--neutral-600)",
+      gradient:
+        "linear-gradient(135deg, var(--neutral-100), var(--neutral-200))",
       features: [
         "First Home Owner Grants up to $30,000",
         "Low deposit options from 5%",
@@ -43,8 +44,9 @@ export default function LoanTypes() {
       emoji: "👨‍👩‍👧‍👦",
       title: "Families & Upgraders",
       subtitle: "Growing your family home",
-      color: "#3B82F6",
-      gradient: "linear-gradient(135deg, #3B82F6, #2563EB)",
+      color: "var(--neutral-600)",
+      gradient:
+        "linear-gradient(135deg, var(--neutral-100), var(--neutral-200))",
       features: [
         "Larger loan amounts up to $5M",
         "Equity release options",
@@ -61,8 +63,9 @@ export default function LoanTypes() {
       emoji: "💼",
       title: "Self-Employed",
       subtitle: "Business owners & entrepreneurs",
-      color: "#8B5CF6",
-      gradient: "linear-gradient(135deg, #8B5CF6, #7C3AED)",
+      color: "var(--neutral-600)",
+      gradient:
+        "linear-gradient(135deg, var(--neutral-100), var(--neutral-200))",
       features: [
         "Low-doc loan options",
         "Alternative income verification",
@@ -79,8 +82,9 @@ export default function LoanTypes() {
       emoji: "🎓",
       title: "Professionals",
       subtitle: "Career-focused individuals",
-      color: "#F59E0B",
-      gradient: "linear-gradient(135deg, #F59E0B, #D97706)",
+      color: "var(--neutral-600)",
+      gradient:
+        "linear-gradient(135deg, var(--neutral-100), var(--neutral-200))",
       features: [
         "Higher borrowing capacity",
         "Professional packages",
@@ -106,44 +110,53 @@ export default function LoanTypes() {
 
   return (
     <section
-      className="py-24 relative overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #F7F5F0, white)" }}
+      className="py-24 md:py-32 relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(180deg, var(--neutral-50) 0%, #ffffff 100%)",
+      }}
     >
       {/* Decorative Elements */}
       <div
-        className="absolute top-20 left-10 w-64 h-64 rounded-full blur-3xl opacity-20"
-        style={{ backgroundColor: "#C8A55A" }}
+        className="absolute top-20 left-10 w-64 h-64 rounded-full blur-3xl opacity-10"
+        style={{ backgroundColor: "var(--neutral-300)" }}
       ></div>
       <div
-        className="absolute bottom-20 right-10 w-64 h-64 rounded-full blur-3xl opacity-20"
-        style={{ backgroundColor: "#0B1C3D" }}
+        className="absolute bottom-20 right-10 w-64 h-64 rounded-full blur-3xl opacity-10"
+        style={{ backgroundColor: "var(--neutral-300)" }}
       ></div>
 
       <div className="section-container relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div
-            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold mb-6"
-            style={{
-              backgroundColor: "rgba(200, 165, 90, 0.1)",
-              color: "#A98336",
-            }}
-          >
-            <Heart className="w-4 h-4" />
-            Personalized loan solutions
+          <div className="inline-flex items-center gap-2 mb-6 premium-badge">
+            <span>Personalized Solutions</span>
           </div>
           <h2
-            className="text-4xl md:text-5xl font-bold mb-6"
-            style={{ color: "#0B1C3D" }}
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 800,
+              lineHeight: 1.2,
+              letterSpacing: "-0.02em",
+              color: "var(--primary)",
+              marginBottom: "1rem",
+            }}
           >
             Find Your Perfect
-            <span className="block" style={{ color: "#C8A55A" }}>
+            <span className="block" style={{ color: "var(--primary)" }}>
               Home Loan Match
             </span>
           </h2>
+          <div className="accent-line mx-auto mb-6"></div>
           <p
-            className="text-xl max-w-3xl mx-auto mb-8"
-            style={{ color: "rgba(11, 28, 61, 0.7)" }}
+            style={{
+              fontSize: "clamp(1rem, 2vw, 1.125rem)",
+              lineHeight: 1.6,
+              color: "var(--neutral-600)",
+              maxWidth: "42rem",
+              margin: "0 auto 2rem",
+            }}
           >
             Every borrower is unique. We've designed specialized loan pathways
             that match your specific situation, from first-time buyers to
@@ -156,21 +169,30 @@ export default function LoanTypes() {
               className="flex items-center gap-2"
               style={{ color: "rgba(11, 28, 61, 0.6)" }}
             >
-              <CheckCircle className="w-4 h-4" style={{ color: "#10B981" }} />
+              <CheckCircle
+                className="w-4 h-4"
+                style={{ color: "var(--neutral-600)" }}
+              />
               40+ Lenders
             </div>
             <div
               className="flex items-center gap-2"
               style={{ color: "rgba(11, 28, 61, 0.6)" }}
             >
-              <Star className="w-4 h-4" style={{ color: "#F59E0B" }} />
+              <Star
+                className="w-4 h-4"
+                style={{ color: "var(--neutral-600)" }}
+              />
               4.9/5 Rating
             </div>
             <div
               className="flex items-center gap-2"
               style={{ color: "rgba(11, 28, 61, 0.6)" }}
             >
-              <Zap className="w-4 h-4" style={{ color: "#8B5CF6" }} />
+              <Zap
+                className="w-4 h-4"
+                style={{ color: "var(--neutral-600)" }}
+              />
               24hr Approval
             </div>
           </div>

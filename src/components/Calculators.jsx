@@ -37,16 +37,39 @@ export default function Calculators() {
   return (
     <section
       id="calculators"
-      className="py-24"
-      style={{ background: "linear-gradient(to bottom, white, #F7F5F0)" }}
+      className="py-24 md:py-32"
+      style={{
+        background:
+          "linear-gradient(180deg, #ffffff 0%, var(--neutral-50) 100%)",
+      }}
     >
       <div className="section-container">
-        <div className="text-center mb-16">
-          <span className="section-eyebrow mb-4">Plan with confidence</span>
-          <h2 className="premium-heading mb-4">Mortgage Calculators</h2>
+        <div className="text-center mb-16 md:mb-20">
+          <div className="inline-flex items-center gap-2 mb-6 premium-badge">
+            <span>Financial Tools</span>
+          </div>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 800,
+              lineHeight: 1.2,
+              letterSpacing: "-0.02em",
+              color: "var(--primary)",
+              marginBottom: "1rem",
+            }}
+          >
+            Mortgage Calculators
+          </h2>
+          <div className="accent-line mx-auto mb-6"></div>
           <p
-            className="text-xl max-w-2xl mx-auto"
-            style={{ color: "rgba(11, 28, 61, 0.65)" }}
+            style={{
+              fontSize: "clamp(1rem, 2vw, 1.125rem)",
+              lineHeight: 1.6,
+              color: "var(--neutral-600)",
+              maxWidth: "42rem",
+              margin: "0 auto",
+            }}
           >
             Plan your finances with our free calculators
           </p>
@@ -61,24 +84,49 @@ export default function Calculators() {
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
                 style={{
-                  backgroundColor: "rgba(11, 28, 61, 0.05)",
-                  border: "1px solid rgba(200, 165, 90, 0.3)",
+                  backgroundColor: "var(--neutral-100)",
+                  border: "1px solid var(--neutral-200)",
+                  transition: "all var(--transition-base)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "var(--neutral-200)";
+                  e.currentTarget.style.borderColor = "var(--neutral-300)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "var(--neutral-100)";
+                  e.currentTarget.style.borderColor = "var(--neutral-200)";
                 }}
               >
-                <tool.icon className="w-8 h-8" style={{ color: "#A98336" }} />
+                <tool.icon
+                  className="w-8 h-8"
+                  style={{ color: "var(--neutral-700)" }}
+                />
               </div>
               <h3
-                className="text-xl font-bold mb-3"
-                style={{ color: "#0B1C3D" }}
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "1.25rem",
+                  fontWeight: 700,
+                  lineHeight: 1.3,
+                  color: "var(--primary)",
+                  marginBottom: "0.75rem",
+                }}
               >
                 {tool.title}
               </h3>
-              <p className="mb-4" style={{ color: "rgba(11, 28, 61, 0.7)" }}>
+              <p
+                style={{
+                  fontSize: "0.9375rem",
+                  lineHeight: 1.6,
+                  color: "var(--neutral-600)",
+                  marginBottom: "1rem",
+                }}
+              >
                 {tool.description}
               </p>
               <button
                 className="font-semibold hover:underline"
-                style={{ color: "#A98336" }}
+                style={{ color: "var(--neutral-700)" }}
               >
                 Use Calculator →
               </button>
@@ -86,7 +134,7 @@ export default function Calculators() {
           ))}
         </div>
 
-        <div className="max-w-4xl mx-auto bg-white/90 border border-white rounded-3xl shadow-card p-8 lg:p-12 backdrop-blur-sm">
+        <div className=" mx-auto bg-white/90 border border-white rounded-3xl shadow-card p-8 lg:p-12 backdrop-blur-sm">
           <h3
             className="text-2xl font-bold mb-8 text-center"
             style={{ color: "#0B1C3D" }}

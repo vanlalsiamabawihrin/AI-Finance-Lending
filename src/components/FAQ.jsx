@@ -52,14 +52,36 @@ export default function FAQ() {
   return (
     <>
       <SchemaMarkup type="faq" data={faqs} />
-      <section className="py-20 bg-neutral-50">
+      <section className="py-24 md:py-32 bg-neutral-50">
         <div className="section-container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+          <div className="text-center mb-16 md:mb-20">
+            <div className="inline-flex items-center gap-2 mb-6 premium-badge">
+              <span>Quick Answers</span>
+            </div>
+            <h2
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                color: "var(--primary)",
+                marginBottom: "1rem",
+              }}
+            >
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Got questions? We have answers
+            <div className="accent-line mx-auto mb-6"></div>
+            <p
+              style={{
+                fontSize: "clamp(1rem, 2vw, 1.125rem)",
+                lineHeight: 1.6,
+                color: "var(--neutral-600)",
+                maxWidth: "42rem",
+                margin: "0 auto",
+              }}
+            >
+              Got questions? We have the answers you need
             </p>
           </div>
 
@@ -67,21 +89,41 @@ export default function FAQ() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-card mb-4 overflow-hidden transition-all duration-300 hover:shadow-soft"
+                className="card mb-4 overflow-hidden"
+                style={{
+                  transition: "all var(--transition-base)",
+                  border:
+                    openIndex === index
+                      ? "1px solid var(--neutral-300)"
+                      : "1px solid var(--neutral-100)",
+                }}
               >
                 <button
                   onClick={() =>
                     setOpenIndex(openIndex === index ? null : index)
                   }
                   className="w-full px-8 py-6 flex items-center justify-between text-left"
+                  style={{
+                    transition: "all var(--transition-base)",
+                  }}
                 >
-                  <span className="text-lg font-bold text-primary pr-8">
+                  <span
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "1.125rem",
+                      fontWeight: 600,
+                      color: "var(--primary)",
+                      paddingRight: "2rem",
+                      lineHeight: 1.4,
+                    }}
+                  >
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`w-6 h-6 text-accent flex-shrink-0 transition-transform duration-300 ${
+                    className={`w-5 h-5 transition-transform duration-300 flex-shrink-0 ${
                       openIndex === index ? "rotate-180" : ""
                     }`}
+                    style={{ color: "var(--neutral-600)" }}
                   />
                 </button>
                 <div

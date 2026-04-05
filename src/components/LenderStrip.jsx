@@ -13,11 +13,19 @@ export default function LenderStrip() {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-neutral-50 to-white border-y border-neutral-200/70">
+    <section className="py-16 md:py-20 bg-gradient-to-b from-neutral-50 to-white border-y border-neutral-200/70">
       <div className="section-container">
         <div className="text-center mb-8">
-          <span className="section-eyebrow mb-3">Lender network advantage</span>
-          <p className="text-primary/70 font-semibold">
+          <div className="inline-flex items-center gap-2 mb-4 premium-badge">
+            <span>Lender Network</span>
+          </div>
+          <p
+            style={{
+              fontSize: "1.125rem",
+              color: "var(--neutral-600)",
+              fontWeight: 600,
+            }}
+          >
             Trusted by Australia's leading lenders
           </p>
         </div>
@@ -26,14 +34,35 @@ export default function LenderStrip() {
           {lenders.map((lender, index) => (
             <div
               key={index}
-              className="flex items-center justify-center min-h-[52px] text-primary/65 font-semibold text-xs md:text-sm rounded-2xl border border-neutral-200 bg-white/90 px-3 text-center shadow-soft hover:border-accent/40 hover:text-primary transition-all duration-300"
+              className="flex items-center justify-center min-h-[52px] font-semibold text-xs md:text-sm rounded-2xl border border-neutral-200 bg-white/90 px-3 text-center card transition-all duration-300"
+              style={{
+                color: "var(--neutral-700)",
+                transition: "all var(--transition-base)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "var(--neutral-300)";
+                e.currentTarget.style.color = "var(--primary)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--neutral-200)";
+                e.currentTarget.style.color = "var(--neutral-700)";
+              }}
             >
               {lender}
             </div>
           ))}
         </div>
 
-        <p className="text-center text-accent-dark font-semibold mt-8 tracking-wide text-sm">
+        <p
+          style={{
+            textAlign: "center",
+            color: "var(--neutral-700)",
+            fontWeight: 600,
+            letterSpacing: "0.05em",
+            fontSize: "0.875rem",
+            marginTop: "2rem",
+          }}
+        >
           + 32 More Lenders
         </p>
       </div>

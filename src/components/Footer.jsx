@@ -32,87 +32,196 @@ export default function Footer() {
 
   return (
     <footer
-      className="text-white pt-16 pb-8"
-      style={{ background: "linear-gradient(to bottom, #0B1C3D, #071125)" }}
+      className="text-white pt-20 pb-8"
+      style={{
+        background:
+          "linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%)",
+      }}
     >
       <div className="section-container">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-soft border border-white/15">
+              <div
+                style={{
+                  width: "3rem",
+                  height: "3rem",
+                  borderRadius: "var(--radius-xl)",
+                  background: "white",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "var(--shadow-md)",
+                }}
+              >
                 <img
                   src={appLogo}
                   alt="AI Finance & Lending - Australian Mortgage Broker Logo"
-                  className="h-8 w-auto rounded-2xl"
+                  style={{
+                    height: "2rem",
+                    width: "auto",
+                    borderRadius: "var(--radius-lg)",
+                  }}
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-white font-bold text-lg leading-tight">
-                  AI Finance
+                <span
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
+                    lineHeight: 1.2,
+                    color: "white",
+                  }}
+                >
+                  AI Finance & Lending
                 </span>
                 <span
-                  className="text-xs font-semibold leading-tight tracking-[0.16em]"
-                  style={{ color: "#E7D2A8" }}
+                  style={{
+                    fontSize: "0.6875rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: "rgba(255, 255, 255, 0.6)",
+                  }}
                 >
-                  PREMIUM ADVISORY
+                  Premium Advisory
                 </span>
               </div>
             </div>
-            <p className="text-white/70 mb-6 leading-relaxed">
-              Your trusted partner in finding the perfect home loan solution.
-              Expert advice, competitive rates, and personalized service.
+            <p
+              style={{
+                color: "rgba(255, 255, 255, 0.7)",
+                fontSize: "0.9375rem",
+                lineHeight: 1.6,
+                marginBottom: "1.5rem",
+              }}
+            >
+              Your trusted partner in premium mortgage solutions. Expert
+              guidance, exclusive rates, and personalized service.
             </p>
             <div className="flex gap-4">
               <button
                 type="button"
-                className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors"
-                style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+                style={{
+                  width: "2.5rem",
+                  height: "2.5rem",
+                  borderRadius: "var(--radius-lg)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: "rgba(255, 255, 255, 0.08)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  transition: "all var(--transition-base)",
+                  cursor: "pointer",
+                }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#C8A55A";
+                  e.currentTarget.style.background = "var(--accent)";
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                  e.currentTarget.style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor =
+                  e.currentTarget.style.background =
+                    "rgba(255, 255, 255, 0.08)";
+                  e.currentTarget.style.borderColor =
                     "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.transform = "translateY(0)";
                 }}
                 aria-label="Facebook"
               >
-                <span className="text-white font-bold text-sm">f</span>
+                <span
+                  style={{
+                    color: "white",
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                  }}
+                >
+                  f
+                </span>
               </button>
               <button
                 type="button"
-                className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors"
-                style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+                style={{
+                  width: "2.5rem",
+                  height: "2.5rem",
+                  borderRadius: "var(--radius-lg)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: "rgba(255, 255, 255, 0.08)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  transition: "all var(--transition-base)",
+                  cursor: "pointer",
+                }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#C8A55A";
+                  e.currentTarget.style.background = "var(--accent)";
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                  e.currentTarget.style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor =
+                  e.currentTarget.style.background =
+                    "rgba(255, 255, 255, 0.08)";
+                  e.currentTarget.style.borderColor =
                     "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.transform = "translateY(0)";
                 }}
                 aria-label="Instagram"
               >
-                <span className="text-white font-bold text-sm">📷</span>
+                <span style={{ fontSize: "0.875rem" }}>📷</span>
               </button>
               <button
                 type="button"
-                className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors"
-                style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+                style={{
+                  width: "2.5rem",
+                  height: "2.5rem",
+                  borderRadius: "var(--radius-lg)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: "rgba(255, 255, 255, 0.08)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  transition: "all var(--transition-base)",
+                  cursor: "pointer",
+                }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#C8A55A";
+                  e.currentTarget.style.background = "var(--accent)";
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                  e.currentTarget.style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor =
+                  e.currentTarget.style.background =
+                    "rgba(255, 255, 255, 0.08)";
+                  e.currentTarget.style.borderColor =
                     "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.transform = "translateY(0)";
                 }}
                 aria-label="LinkedIn"
               >
-                <span className="text-white font-bold text-sm">in</span>
+                <span
+                  style={{
+                    color: "white",
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                  }}
+                >
+                  in
+                </span>
               </button>
             </div>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6">Services</h4>
+            <h4
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "1.125rem",
+                fontWeight: 700,
+                marginBottom: "1.5rem",
+                color: "white",
+              }}
+            >
+              Services
+            </h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
@@ -135,7 +244,17 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6">Resources</h4>
+            <h4
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "1.125rem",
+                fontWeight: 700,
+                marginBottom: "1.5rem",
+                color: "white",
+              }}
+            >
+              Resources
+            </h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
@@ -158,7 +277,17 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6">Contact Info</h4>
+            <h4
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "1.125rem",
+                fontWeight: 700,
+                marginBottom: "1.5rem",
+                color: "white",
+              }}
+            >
+              Contact Info
+            </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone

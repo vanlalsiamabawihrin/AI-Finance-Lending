@@ -58,23 +58,36 @@ export default function ContactForm() {
     return (
       <section
         id="contact"
-        className="py-24"
-        style={{ background: "linear-gradient(135deg, #F7F5F0, white)" }}
+        className="py-24 md:py-32"
+        style={{
+          background:
+            "linear-gradient(180deg, var(--neutral-50) 0%, #ffffff 100%)",
+        }}
       >
         <div className="section-container">
           <div className="max-w-2xl mx-auto text-center">
             <div
               className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
               style={{
-                background:
-                  "linear-gradient(to bottom right, #C8A55A, #A98336)",
+                background: "var(--neutral-100)",
+                border: "1px solid var(--neutral-200)",
               }}
             >
-              <CheckCircle className="w-10 h-10 text-white" />
+              <CheckCircle
+                className="w-10 h-10"
+                style={{ color: "var(--neutral-700)" }}
+              />
             </div>
             <h2
-              className="text-4xl font-bold mb-4"
-              style={{ color: "#0B1C3D" }}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                color: "var(--primary)",
+                marginBottom: "1rem",
+              }}
             >
               Thank You for Contacting Us!
             </h2>
