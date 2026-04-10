@@ -12,3 +12,30 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
     },
   });
 };
+
+export const createPages: GatsbyNode["createPages"] = async ({ actions }) => {
+  const { createRedirect } = actions;
+
+  // Prevent trailing slash redirects
+  createRedirect({
+    fromPath: "/*/",
+    toPath: "/*",
+    isPermanent: true,
+    redirectInBrowser: true,
+  });
+
+  // Handle common redirect patterns
+  createRedirect({
+    fromPath: "/home",
+    toPath: "/",
+    isPermanent: true,
+    redirectInBrowser: true,
+  });
+
+  createRedirect({
+    fromPath: "/index.html",
+    toPath: "/",
+    isPermanent: true,
+    redirectInBrowser: true,
+  });
+};

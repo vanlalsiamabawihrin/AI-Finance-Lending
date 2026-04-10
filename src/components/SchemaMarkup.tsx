@@ -210,16 +210,26 @@ const SchemaMarkup: React.FC<SchemaMarkupProps> = ({
 
   const getReviewSchema = (reviews: any[]) => ({
     "@context": "https://schema.org",
-    "@type": "AggregateRating",
-    itemReviewed: {
-      "@type": "Organization",
-      name: "AI Finance & Lending",
-      url: "https://www.aifinancelending.com.au",
+    "@type": "LocalBusiness",
+    name: "AI Finance & Lending",
+    url: "https://www.aifinancelending.com.au",
+    telephone: "1300 000 000",
+    email: "hello@aifinancelending.com.au",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Level 10, 123 Queen Street",
+      addressLocality: "Melbourne",
+      addressRegion: "VIC",
+      postalCode: "3000",
+      addressCountry: "AU",
     },
-    ratingValue: "4.9",
-    reviewCount: "500",
-    bestRating: "5",
-    worstRating: "1",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: reviews.length.toString(),
+      bestRating: "5",
+      worstRating: "1",
+    },
     review: reviews.map((review) => ({
       "@type": "Review",
       author: {

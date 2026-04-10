@@ -37,7 +37,9 @@ const SEO: React.FC<SEOProps> = ({
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    url: `${siteUrl}${pathname || ``}`,
+    url:
+      `${siteUrl}${pathname || ``}`.replace(/\/+/g, "/").replace(/\/$/, "") ||
+      siteUrl,
     image: `${siteUrl}${image || defaultImage}`,
   };
 
