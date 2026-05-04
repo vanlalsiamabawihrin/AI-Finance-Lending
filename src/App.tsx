@@ -1,6 +1,7 @@
 import React from "react";
 import SEO from "./components/SEO";
 import SchemaMarkup from "./components/SchemaMarkup";
+import ScrollProgress from "./components/ScrollProgress";
 import TrustBar from "./components/TrustBar";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -18,6 +19,7 @@ import CTABanner from "./components/CTABanner";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import "./styles/global.css";
+import "./styles/interactive.css";
 
 function App() {
   // Breadcrumb data for structured data
@@ -27,6 +29,7 @@ function App() {
 
   return (
     <>
+      <ScrollProgress />
       <SEO
         title="AI Finance & Lending - Expert Mortgage Brokers Australia"
         description="Get expert mortgage advice and access to 40+ lenders. Pre-approval in 24 hours. No upfront fees. Trusted by 2,500+ Australian homeowners."

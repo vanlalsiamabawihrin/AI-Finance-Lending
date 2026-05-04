@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Users,
   Briefcase,
@@ -17,6 +17,32 @@ import {
 export default function LoanTypes() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  const observerRef = useRef();
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    // Observe all elements with data-animate attribute
+    const elements = document.querySelectorAll("[data-animate]");
+    elements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
 
   const borrowerTypes = [
     {
@@ -128,11 +154,26 @@ export default function LoanTypes() {
 
       <div className="section-container relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div
+          data-animate="fade-up"
+          id="loantypes-header"
+          className={`text-center mb-16 transition-all duration-1000 transform ${
+            visibleElements.has("loantypes-header")
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
           <div className="inline-flex items-center gap-2 mb-6 premium-badge">
             <span>Personalized Solutions</span>
           </div>
           <h2
+            data-animate="fade-up"
+            id="loantypes-title"
+            className={`transition-all duration-1000 delay-200 transform ${
+              visibleElements.has("loantypes-title")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -237,7 +278,13 @@ export default function LoanTypes() {
 
                 {/* Main Card */}
                 <div
-                  className="relative h-full cursor-pointer transition-all duration-500 transform"
+                  data-animate="fade-up"
+                  id={`loantypes-card-${index}`}
+                  className={`relative h-full cursor-pointer transition-all duration-500 transform ${
+                    visibleElements.has(`loantypes-card-${index}`)
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-10"
+                  }`}
                   style={{
                     transform: isSelected
                       ? "scale(1.05)"
@@ -245,6 +292,7 @@ export default function LoanTypes() {
                         ? "scale(1.02)"
                         : "scale(1)",
                     zIndex: isSelected ? 10 : 1,
+                    transitionDelay: `${300 + index * 100}ms`,
                   }}
                 >
                   {/* Glass morphism background */}

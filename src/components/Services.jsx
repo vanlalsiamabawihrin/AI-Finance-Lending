@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Home,
   RefreshCw,
@@ -9,6 +9,33 @@ import {
 } from "lucide-react";
 
 export default function Services() {
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  const observerRef = useRef();
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    // Observe all elements with data-animate attribute
+    const elements = document.querySelectorAll("[data-animate]");
+    elements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
   const services = [
     {
       icon: Home,
@@ -58,11 +85,26 @@ export default function Services() {
       }}
     >
       <div className="section-container">
-        <div className="text-center mb-16 md:mb-20">
+        <div
+          data-animate="fade-up"
+          id="services-header"
+          className={`text-center mb-16 md:mb-20 transition-all duration-1000 transform ${
+            visibleElements.has("services-header")
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
           <div className="inline-flex items-center gap-2 mb-6 premium-badge">
             <span>Premium Services</span>
           </div>
           <h2
+            data-animate="fade-up"
+            id="services-title"
+            className={`transition-all duration-1000 delay-200 transform ${
+              visibleElements.has("services-title")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -94,10 +136,17 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group card"
+              data-animate="fade-up"
+              id={`services-card-${index}`}
+              className={`group card transition-all duration-1000 transform hover:-translate-y-2 ${
+                visibleElements.has(`services-card-${index}`)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
               style={{
                 cursor: "pointer",
                 transition: "all var(--transition-base)",
+                transitionDelay: `${300 + index * 100}ms`,
               }}
             >
               <div

@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Download, CheckCircle2 } from "lucide-react";
-import { useState } from "react";
 
 export default function LeadMagnet() {
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  const observerRef = useRef();
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    // Observe all elements with data-animate attribute
+    const elements = document.querySelectorAll("[data-animate]");
+    elements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     email: "",

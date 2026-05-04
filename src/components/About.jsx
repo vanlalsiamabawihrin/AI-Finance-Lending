@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Award, Users, TrendingUp, Heart } from "lucide-react";
 
 export default function About() {
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  const observerRef = useRef();
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    // Observe all elements with data-animate attribute
+    const elements = document.querySelectorAll("[data-animate]");
+    elements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
   const stats = [
     { icon: Users, value: "2,500+", label: "Happy Clients" },
     { icon: Award, value: "15+", label: "Years Experience" },
@@ -14,7 +41,15 @@ export default function About() {
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <div>
-            <div className="relative">
+            <div
+              data-animate="fade-up"
+              id="about-image"
+              className={`relative transition-all duration-1000 transform ${
+                visibleElements.has("about-image")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <div className="absolute -inset-4 bg-gradient-to-br from-neutral-100 to-neutral-50 rounded-3xl opacity-60 blur-2xl"></div>
               <img
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=700&fit=crop"

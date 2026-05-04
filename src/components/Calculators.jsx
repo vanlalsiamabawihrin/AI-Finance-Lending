@@ -1,11 +1,36 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Calculator, PiggyBank, TrendingUp } from "lucide-react";
-import { useState } from "react";
 
 export default function Calculators() {
   const [loanAmount, setLoanAmount] = useState(500000);
   const [interestRate, setInterestRate] = useState(6.5);
   const [loanTerm, setLoanTerm] = useState(30);
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  const observerRef = useRef();
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    // Observe all elements with data-animate attribute
+    const elements = document.querySelectorAll("[data-animate]");
+    elements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
 
   const calculateRepayment = () => {
     const monthlyRate = interestRate / 100 / 12;
@@ -44,11 +69,26 @@ export default function Calculators() {
       }}
     >
       <div className="section-container">
-        <div className="text-center mb-16 md:mb-20">
+        <div
+          data-animate="fade-up"
+          id="calculators-header"
+          className={`text-center mb-16 md:mb-20 transition-all duration-1000 transform ${
+            visibleElements.has("calculators-header")
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
           <div className="inline-flex items-center gap-2 mb-6 premium-badge">
             <span>Financial Tools</span>
           </div>
           <h2
+            data-animate="fade-up"
+            id="calculators-title"
+            className={`transition-all duration-1000 delay-200 transform ${
+              visibleElements.has("calculators-title")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -79,7 +119,16 @@ export default function Calculators() {
           {calculatorTools.map((tool, index) => (
             <div
               key={index}
-              className="card text-center hover:-translate-y-1 cursor-pointer"
+              data-animate="fade-up"
+              id={`calculators-tool-${index}`}
+              className={`card text-center hover:-translate-y-1 cursor-pointer transition-all duration-1000 transform ${
+                visibleElements.has(`calculators-tool-${index}`)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+              style={{
+                transitionDelay: `${300 + index * 100}ms`,
+              }}
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"

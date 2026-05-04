@@ -1,10 +1,35 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import SchemaMarkup from "./SchemaMarkup";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  const observerRef = useRef();
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    // Observe all elements with data-animate attribute
+    const elements = document.querySelectorAll("[data-animate]");
+    elements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
 
   const faqs = [
     {
@@ -54,11 +79,26 @@ export default function FAQ() {
       <SchemaMarkup type="faq" data={faqs} />
       <section className="py-24 md:py-32 bg-neutral-50">
         <div className="section-container">
-          <div className="text-center mb-16 md:mb-20">
+          <div
+            data-animate="fade-up"
+            id="faq-header"
+            className={`text-center mb-16 md:mb-20 transition-all duration-1000 transform ${
+              visibleElements.has("faq-header")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+          >
             <div className="inline-flex items-center gap-2 mb-6 premium-badge">
               <span>Quick Answers</span>
             </div>
             <h2
+              data-animate="fade-up"
+              id="faq-title"
+              className={`transition-all duration-1000 delay-200 transform ${
+                visibleElements.has("faq-title")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(2rem, 4vw, 3rem)",

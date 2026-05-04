@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { TrendingDown, Clock, Shield, Award } from "lucide-react";
 
 export default function WhyChooseUs() {
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  const observerRef = useRef();
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    // Observe all elements with data-animate attribute
+    const elements = document.querySelectorAll("[data-animate]");
+    elements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
   const features = [
     {
       icon: TrendingDown,
@@ -38,11 +65,26 @@ export default function WhyChooseUs() {
       }}
     >
       <div className="section-container">
-        <div className="text-center mb-16 md:mb-20">
+        <div
+          data-animate="fade-up"
+          id="whychooseus-header"
+          className={`text-center mb-16 md:mb-20 transition-all duration-1000 transform ${
+            visibleElements.has("whychooseus-header")
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
           <div className="inline-flex items-center gap-2 mb-6 premium-badge">
             <span>Our Advantages</span>
           </div>
           <h2
+            data-animate="fade-up"
+            id="whychooseus-title"
+            className={`transition-all duration-1000 delay-200 transform ${
+              visibleElements.has("whychooseus-title")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -74,10 +116,17 @@ export default function WhyChooseUs() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="card text-center"
+              data-animate="fade-up"
+              id={`whychooseus-feature-${index}`}
+              className={`card text-center transition-all duration-1000 transform hover:-translate-y-2 ${
+                visibleElements.has(`whychooseus-feature-${index}`)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
               style={{
                 padding: "2rem 1.5rem",
                 transition: "all var(--transition-base)",
+                transitionDelay: `${300 + index * 100}ms`,
               }}
             >
               <div

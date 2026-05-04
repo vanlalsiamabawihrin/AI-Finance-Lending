@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   ArrowRight,
   CheckCircle2,
@@ -7,13 +7,38 @@ import {
   TrendingUp,
   Phone,
 } from "lucide-react";
-import { useState } from "react";
 
 export default function Hero() {
   const [formData, setFormData] = useState({
     loanAmount: "",
     loanType: "home-purchase",
   });
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  const observerRef = useRef();
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    // Observe all elements with data-animate attribute
+    const elements = document.querySelectorAll("[data-animate]");
+    elements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +74,15 @@ export default function Hero() {
 
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-in-up">
+          <div
+            data-animate="fade-up"
+            id="hero-badge"
+            className={`transition-all duration-1000 transform ${
+              visibleElements.has("hero-badge")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+          >
             {/* Premium Trust Badge */}
             <div className="inline-flex items-center gap-2 mb-6 premium-badge">
               <Shield
@@ -60,6 +93,13 @@ export default function Hero() {
             </div>
 
             <h1
+              data-animate="fade-up"
+              id="hero-title"
+              className={`transition-all duration-1000 delay-200 transform ${
+                visibleElements.has("hero-title")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
@@ -86,6 +126,13 @@ export default function Hero() {
             </h1>
 
             <p
+              data-animate="fade-up"
+              id="hero-description"
+              className={`transition-all duration-1000 delay-300 transform ${
+                visibleElements.has("hero-description")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
               style={{
                 fontSize: "clamp(1.125rem, 2vw, 1.375rem)",
                 lineHeight: 1.6,
@@ -103,7 +150,15 @@ export default function Hero() {
             </p>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap gap-4 mb-8">
+            <div
+              data-animate="fade-up"
+              id="hero-trust"
+              className={`flex flex-wrap gap-4 mb-8 transition-all duration-1000 delay-400 transform ${
+                visibleElements.has("hero-trust")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <div className="trust-indicator">
                 <Award
                   className="w-4 h-4"
@@ -120,7 +175,15 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <div
+              data-animate="fade-up"
+              id="hero-cta"
+              className={`flex flex-col sm:flex-row gap-4 mb-10 transition-all duration-1000 delay-500 transform ${
+                visibleElements.has("hero-cta")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <a href="#contact" className="btn-primary group">
                 <span>Get Pre-Approval Now</span>
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -132,7 +195,15 @@ export default function Hero() {
             </div>
 
             {/* Key Benefits */}
-            <div className="space-y-3">
+            <div
+              data-animate="fade-up"
+              id="hero-benefits"
+              className={`space-y-3 transition-all duration-1000 delay-600 transform ${
+                visibleElements.has("hero-benefits")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               {[
                 "No upfront fees - complimentary consultation",
                 "Compare 40+ premium lenders instantly",
@@ -170,7 +241,13 @@ export default function Hero() {
           </div>
 
           <div
-            className="relative bg-white border rounded-[1.5rem] p-6 sm:p-8 lg:p-10 animate-fade-in"
+            data-animate="fade-up"
+            id="hero-form"
+            className={`relative bg-white border rounded-[1.5rem] p-6 sm:p-8 lg:p-10 transition-all duration-1000 delay-700 transform ${
+              visibleElements.has("hero-form")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
             style={{
               border: "1px solid var(--neutral-100)",
               boxShadow: "var(--shadow-xl)",

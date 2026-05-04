@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MessageSquare, FileSearch, CheckCircle2, Key } from "lucide-react";
 
 export default function HowItWorks() {
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  const observerRef = useRef();
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    // Observe all elements with data-animate attribute
+    const elements = document.querySelectorAll("[data-animate]");
+    elements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
   const steps = [
     {
       icon: MessageSquare,
@@ -52,7 +79,15 @@ export default function HowItWorks() {
       />
 
       <div className="section-container relative z-10">
-        <div className="text-center mb-16 md:mb-20">
+        <div
+          data-animate="fade-up"
+          id="howitworks-header"
+          className={`text-center mb-16 md:mb-20 transition-all duration-1000 transform ${
+            visibleElements.has("howitworks-header")
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
           <p
             className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold mb-4"
             style={{
@@ -64,6 +99,13 @@ export default function HowItWorks() {
             Your path to approval
           </p>
           <h2
+            data-animate="fade-up"
+            id="howitworks-title"
+            className={`transition-all duration-1000 delay-200 transform ${
+              visibleElements.has("howitworks-title")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -93,11 +135,18 @@ export default function HowItWorks() {
           {steps.map((step, index) => (
             <div key={index} className="relative">
               <div
-                className="backdrop-blur-sm rounded-3xl p-8 hover:transition-all hover:duration-300 h-full transition-all duration-300"
+                data-animate="fade-up"
+                id={`howitworks-step-${index}`}
+                className={`backdrop-blur-sm rounded-3xl p-8 hover:transition-all hover:duration-300 h-full transition-all duration-300 transform hover:-translate-y-2 ${
+                  visibleElements.has(`howitworks-step-${index}`)
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.1)",
                   border: "1px solid rgba(255, 255, 255, 0.15)",
                   boxShadow: "0 12px 30px -18px rgba(7, 17, 37, 0.32)",
+                  transitionDelay: `${300 + index * 150}ms`,
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor =
